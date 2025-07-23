@@ -4,7 +4,7 @@ from datetime import timedelta
 import logging
 
 class Rule(ABC):
-  def __init__(self, limit: int, time_delta_seconds: int, col_names_dict, groups):
+  def __init__(self, limit: int, time_delta_seconds: int, col_names_dict: dict, groups: list):
     self.limit = limit
     self.time_delta = timedelta(seconds=time_delta_seconds)
     self.col_names_dict = col_names_dict
