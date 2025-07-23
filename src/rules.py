@@ -20,7 +20,8 @@ class SlidingWindowRule(Rule):
   def check(self, row_tuple):
     current_time = row_tuple[self.col_names_dict["date"]]
     filtered_row = [row_tuple[self.col_names_dict[col_name]] for col_name in self.groups]
-    group_name = "_".join(filtered_row) 
+    filtered_row_str = ["" if s is None else str(s) for s in filtered_row]
+    group_name = "_".join(filtered_row_str) 
     
     if group_name not in self.window_dict.keys():
       self.window_dict[group_name] =  {"window": deque(), "alert_is_active":False}
